@@ -5,8 +5,7 @@
 [[`Paper`](https://arxiv.org/abs/)] [[`BibTeX`](#Citation)]
 
 <div align="center">
-  <img src="https://github.com/Z-Zheng/images_repo/raw/master/Changen1.png
-"><br><br>
+  <img src="https://github.com/Z-Zheng/images_repo/raw/master/Changen1.png"><br><br>
 </div>
 
 ### Features
