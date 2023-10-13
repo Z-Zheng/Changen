@@ -45,6 +45,7 @@ import torch
 
 # 1.1 load a ChangeStar (1x96) model based on ResNet-18 (R18) from scratch
 torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='r18', force_reload=True)
+
 # 1.2 load a ChangeStar (1x96) model based on MiT-B1 (a Transformer backbone) from scratch
 torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='mitb1', force_reload=True)
 
@@ -54,14 +55,17 @@ torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='mitb1', forc
 # pretrained on Changen-90k, fine-tuned on LEVIR-CD train set.
 torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='r18',
                pretrained=True, dataset_name='levircd', force_reload=True)
+
 # 2.2 load a ChangeStar (1x96) model based on ResNet-18 (R18)
 # pretrained on Changen-90k, fine-tuned on S2Looking train set.
 torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='r18',
                pretrained=True, dataset_name='s2looking', force_reload=True)
+
 # 2.3 load a ChangeStar (1x96) model based on MiT-B1
 # pretrained on Changen-90k, fine-tuned on LEVIR-CD train set.
 torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='mitb1',
                pretrained=True, dataset_name='levircd', force_reload=True)
+
 # 2.4 load a ChangeStar (1x96) model based on MiT-B1
 # pretrained on Changen-90k, fine-tuned on S2Looking train set.
 torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='mitb1',
