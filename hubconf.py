@@ -1,4 +1,4 @@
-dependencies = ["torch", "ever-beta"]
+dependencies = ["torch"]
 import torch
 from ever.core.checkpoint import remove_module_prefix, CheckPoint
 import changestar_1x96 as cstar
