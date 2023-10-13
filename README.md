@@ -25,7 +25,7 @@ prediction capability
 - [x] ChangeStar (1x96) based on ResNet-18 and MiT-B1
 - [x] Fine-tuned checkpoints
 
-| Model                           | Backbone | LEVIR-CD (F1) | S2Looking (F1) |
+| Model                           | Backbone | LEVIR-CD ($F_1$) | S2Looking ($F_1$) |
 |---------------------------------|----------|:-------------:|:--------------:|
 | ChangeStar (1x96)               | R-18     |      90.5     |      66.3      |
 | ChangeStar (1x96) + Changen-90k | R-18     |    **91.1**   |    **67.1**    |
