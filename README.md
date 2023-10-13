@@ -27,10 +27,10 @@ prediction capability
 
 | Model                           | Backbone | LEVIR-CD ($F_1$) | S2Looking ($F_1$) |
 |---------------------------------|----------|:-------------:|:--------------:|
-| ChangeStar (1x96)               | R-18     |      90.5     |      66.3      |
-| ChangeStar (1x96) + Changen-90k | R-18     |    **91.1**   |    **67.1**    |
-| ChangeStar (1x96)               | MiT-B1   |      90.0     |      64.4      |
-| ChangeStar (1x96) + Changen-90k | MiT-B1   |    **91.5**   |    **67.9**    |
+| ChangeStar (1x96)               | R-18     |     90.5      |      66.3      |
+| ChangeStar (1x96) + Changen-90k | R-18     |   **91.1**    |    **67.1**    |
+| ChangeStar (1x96)               | MiT-B1   |     90.0      |      64.4      |
+| ChangeStar (1x96) + Changen-90k | MiT-B1   |   **91.5**    |    **67.9**    |
 
 ### Installation
 #### Install [EVer](https://github.com/Z-Zheng/ever):
