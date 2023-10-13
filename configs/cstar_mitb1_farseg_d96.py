@@ -1,0 +1,43 @@
+D = 96
+config = dict(
+    model=dict(
+        type='EncoderDecoder',
+        params=dict(
+            encoder=dict(
+                type='SiameseMiTFarSegEncoder',
+                params=dict(
+                    name='mit_b1',
+                    pretrained=None,
+                    fpn_channels=256,
+                    out_channels=D,
+                    drop_path_rate=0.1,
+                ),
+            ),
+            decoder=dict(
+                type='ChangeMixinBiSupN1',
+                params=dict(
+                    in_channels=D * 2,
+                    out_channels=D,
+                    conv_k=3,
+                    conv_d=1,
+                    returns=['change'],
+                    return_type='dict',
+                ),
+            ),
+            head=dict(
+                type='ConvUpsampleHead',
+                params=dict(
+                    activation=dict(
+                        change='sigmoid'
+                    ),
+                    change_conv=dict(
+                        in_channels=D,
+                        out_channels=1,
+                        scale_factor=4.,
+                        kernel_size=1,
+                    ),
+                )
+            ),
+        )
+    ),
+)

@@ -1,0 +1,42 @@
+config = dict(
+    model=dict(
+        type='EncoderDecoder',
+        params=dict(
+            encoder=dict(
+                type='SiameseFarSegEncoder',
+                params=dict(
+                    resnet_type='resnet18',
+                    pretrained=False,
+                    output_stride=32,
+                    output_format='2-4d',
+                    out_channels=96,
+                ),
+            ),
+            decoder=dict(
+                type='ChangeMixinBiSupN1',
+                params=dict(
+                    in_channels=96 * 2,
+                    out_channels=96,
+                    conv_k=3,
+                    conv_d=1,
+                    returns=['change'],
+                    return_type='dict',
+                ),
+            ),
+            head=dict(
+                type='ConvUpsampleHead',
+                params=dict(
+                    activation=dict(
+                        change='sigmoid'
+                    ),
+                    change_conv=dict(
+                        in_channels=96,
+                        out_channels=1,
+                        scale_factor=4.,
+                        kernel_size=1,
+                    ),
+                )
+            ),
+        )
+    ),
+)
