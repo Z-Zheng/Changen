@@ -38,39 +38,56 @@ pip install ever-beta
 
 We provide an out-of-box way to use our models via ```torch.hub```.
 API usage is shown below. I believe this must be the simplest API you have ever used.
+
+#### a. Model Construction:
 ```python
 import torch
 
 # 1. Choose it if you want to use the network architecture only.
 
 # 1.1 load a ChangeStar (1x96) model based on ResNet-18 (R18) from scratch
-torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='r18', force_reload=True)
+model = torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='r18', force_reload=True)
 
 # 1.2 load a ChangeStar (1x96) model based on MiT-B1 (a Transformer backbone) from scratch
-torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='mitb1', force_reload=True)
+model = torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='mitb1', force_reload=True)
 
 # 2. Choose it if you want to explore a well-trained model.
 
 # 2.1 load a ChangeStar (1x96) model based on ResNet-18 (R18)
 # pretrained on Changen-90k, fine-tuned on LEVIR-CD train set.
-torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='r18',
+model = torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='r18',
                pretrained=True, dataset_name='levircd', force_reload=True)
 
 # 2.2 load a ChangeStar (1x96) model based on ResNet-18 (R18)
 # pretrained on Changen-90k, fine-tuned on S2Looking train set.
-torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='r18',
+model = torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='r18',
                pretrained=True, dataset_name='s2looking', force_reload=True)
 
 # 2.3 load a ChangeStar (1x96) model based on MiT-B1
 # pretrained on Changen-90k, fine-tuned on LEVIR-CD train set.
-torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='mitb1',
+model = torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='mitb1',
                pretrained=True, dataset_name='levircd', force_reload=True)
 
 # 2.4 load a ChangeStar (1x96) model based on MiT-B1
 # pretrained on Changen-90k, fine-tuned on S2Looking train set.
-torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='mitb1',
+model = torch.hub.load('Z-Zheng/Changen', 'changestar_1x96', backbone_name='mitb1',
                pretrained=True, dataset_name='s2looking', force_reload=True)
 ```
+
+#### b. Run the Model
+```python
+import torch
+
+t1_image = torch.rand(1, 3, 512, 512)  # [b, c, h, w]
+t2_image = torch.rand(1, 3, 512, 512)  # [b, c, h, w]
+bi_images = torch.cat([t1_image, t2_image], dim=1)  # [b, tc, h, w]
+
+model = torch.hub.load(...)  # refer to Step. a
+
+predictions = model(bi_images)
+change_prob = predictions['change_prediction']  # [b, 1, h, w]
+```
+
 If you want to delve into the model implementation, check ```changestar_1x96.py```
 
 ---------------------
